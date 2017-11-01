@@ -1,8 +1,10 @@
 package unclediga.tut.spring.core;
 
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import unclediga.tut.spring.core.beans.Client;
+import unclediga.tut.spring.core.beans.Event;
 import unclediga.tut.spring.core.loggers.ConsoleEventLogger;
 import unclediga.tut.spring.core.loggers.EventLogger;
 
@@ -16,18 +18,23 @@ public class App {
         this.eventLogger = eventLogger;
     }
 
-    public void logEvent(String msg) {
+    public void logEvent(Event event, String msg) {
+
         String message = msg.replaceAll(client.getId(), client.getFullName());
-        eventLogger.logEvent(message);
+        event.setMsg(message);
+        eventLogger.logEvent(event);
     }
 
     public static void main(String[] args) {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
-        app.logEvent("Some message for user 1");
 
+        Event event = (Event) ctx.getBean("event");
+        app.logEvent(event,"Some message for user 1");
 
+        event = (Event) ctx.getBean("event");
+        app.logEvent(event,"Some message for user 2");
 
     }
 

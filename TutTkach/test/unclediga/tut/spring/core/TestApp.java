@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import org.junit.Test;
 
 import unclediga.tut.spring.core.beans.Client;
+import unclediga.tut.spring.core.beans.Event;
 import unclediga.tut.spring.core.loggers.EventLogger;
 
 public class TestApp {
@@ -43,7 +44,7 @@ public class TestApp {
         private String msg;
 
         @Override
-        public void logEvent(String msg) {
+        public void logEvent(Event event) {
             this.msg = msg;
         }
 
