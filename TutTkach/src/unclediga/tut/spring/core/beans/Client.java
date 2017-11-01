@@ -1,4 +1,4 @@
-package unclediga.tut.spring.beans;
+package unclediga.tut.spring.core.beans;
 
 public class Client {
     private String id;

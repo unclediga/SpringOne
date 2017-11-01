@@ -1,4 +1,4 @@
-package unclediga.tut.spring.loggers;
+package unclediga.tut.spring.core.loggers;
 
 public class ConsoleEventLogger {
     public void logEvent(String msg) {
