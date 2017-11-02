@@ -2,6 +2,7 @@ package unclediga.tut.spring.core;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import unclediga.tut.spring.core.beans.Client;
 import unclediga.tut.spring.core.beans.Event;
@@ -27,7 +28,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
 
         Event event = (Event) ctx.getBean("event");
@@ -35,6 +36,8 @@ public class App {
 
         event = (Event) ctx.getBean("event");
         app.logEvent(event,"Some message for user 2");
+
+        ctx.close();
 
     }
 

@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="client" class="unclediga.tut.spring.core.beans.Client" >
+    <bean id="client" class="unclediga.tut.spring.core.beans.Client">
         <constructor-arg index="0" value="1"/>
         <constructor-arg index="1" value="John Smith"/>
     </bean>
@@ -25,5 +25,16 @@
 
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
 
+    <bean id="fileEventLogger" class="unclediga.tut.spring.core.loggers.FileEventLogger"
+          init-method="init">
+
+        <constructor-arg value="out/event_log.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="unclediga.tut.spring.core.loggers.CacheFileEventLogger"
+          destroy-method="destroy">
+        <constructor-arg index="0" value="out/event_log.txt"/>
+        <constructor-arg index="1" value="5"/>
+    </bean>
 
 </beans>
