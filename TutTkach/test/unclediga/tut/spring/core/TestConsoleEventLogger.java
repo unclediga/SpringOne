@@ -2,11 +2,14 @@ package unclediga.tut.spring.core;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.DateFormat;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import unclediga.tut.spring.core.beans.Event;
 import unclediga.tut.spring.core.loggers.ConsoleEventLogger;
 
 
@@ -27,9 +30,11 @@ public class TestConsoleEventLogger {
 
     @Test
     public void testLogEvent() {
-//        ConsoleEventLogger logger = new ConsoleEventLogger();
-//        logger.logEvent(MSG);
-//        Assert.assertTrue(outContent.toString().contains(MSG));
+        ConsoleEventLogger logger = new ConsoleEventLogger();
+        Event event = new Event(new Date(), DateFormat.getDateTimeInstance());
+        event.setMsg(MSG);
+        logger.logEvent(event);
+        Assert.assertTrue(outContent.toString().contains(MSG));
     }
 
 }
