@@ -9,8 +9,7 @@
         <constructor-arg value="out/event_log.txt"/>
     </bean>
     <bean class="unclediga.tut.spring.core.loggers.CacheFileEventLogger" destroy-method="destroy"
-          id="cacheFileEventLogger">
-        <constructor-arg index="0" value="out/event_log.txt"/>
+          id="cacheFileEventLogger" parent="fileEventLogger">
         <constructor-arg index="1" value="5"/>
     </bean>
 </beans>
