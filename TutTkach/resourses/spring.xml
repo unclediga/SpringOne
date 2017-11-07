@@ -13,7 +13,14 @@
 
     <bean id="app" class="unclediga.tut.spring.core.App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="eventLogger"/>
+        <constructor-arg ref="consoleEventLogger"/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+
+            </map>
+        </constructor-arg>
     </bean>
 
     <bean id="event" class="unclediga.tut.spring.core.beans.Event" scope="prototype">
