@@ -4,8 +4,9 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/resourses/spring.xml</file>
-          <file>file://$MODULE_DIR$/resourses/loggers.xml</file>
+          <file>file://$MODULE_DIR$/resourses/context_annotation_config.xml</file>
+          <file>file://$MODULE_DIR$/src/unclediga/tut/spring/core/spring/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/unclediga/tut/spring/core/spring/LoggerConfig.java</file>
         </fileset>
       </configuration>
     </facet>

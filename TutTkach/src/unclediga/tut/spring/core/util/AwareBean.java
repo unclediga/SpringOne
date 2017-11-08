@@ -6,12 +6,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
+@Component
 public class AwareBean implements ApplicationContextAware,BeanNameAware,ApplicationEventPublisherAware{
     String name;
     ApplicationContext ctx;
     ApplicationEventPublisher eventPublisher;
 
+    @PostConstruct
     public void init() {
 
         String simpleName = this.getClass().getSimpleName();

@@ -1,14 +1,22 @@
 package unclediga.tut.spring.core.loggers;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import unclediga.tut.spring.core.beans.Event;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
-
+@Component
 public class FileEventLogger implements EventLogger{
+
+    @Value("${events.file:out/events_log.txt}")
     private String fileName;
     private File file;
+
+    public FileEventLogger() {
+    }
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
@@ -23,6 +31,7 @@ public class FileEventLogger implements EventLogger{
         }
     }
 
+    @PostConstruct
     public void init() {
         file = new File(fileName);
         if (file.exists() && !file.canWrite()){

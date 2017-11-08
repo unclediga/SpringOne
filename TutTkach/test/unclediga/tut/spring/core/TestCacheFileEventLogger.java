@@ -32,10 +32,17 @@ public class TestCacheFileEventLogger {
     }
 
 
-    @Test
-    public void testLogEvent() throws IOException {
+    private CacheFileEventLogger createAndInitCacheFileEventLogger() {
         CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(),2);
         logger.init();
+        logger.initCache();
+        return logger;
+    }
+
+
+    @Test
+    public void testLogEvent() throws IOException {
+        CacheFileEventLogger logger = createAndInitCacheFileEventLogger();
         Event event = new Event(new Date(), DateFormat.getDateTimeInstance());
         event.setMsg("Hello");
 
@@ -54,10 +61,10 @@ public class TestCacheFileEventLogger {
 
     }
 
+
     @Test
     public void testDestroy() throws IOException {
-        CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(),2);
-        logger.init();
+        CacheFileEventLogger logger = createAndInitCacheFileEventLogger();
         Event event = new Event(new Date(), DateFormat.getDateTimeInstance());
         event.setMsg("Hello");
 
