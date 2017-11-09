@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 @Component
-public class FileEventLogger implements EventLogger{
+public class FileEventLogger extends AbstractLogger{
 
     @Value("${events.file:out/events_log.txt}")
     private String fileName;
@@ -29,6 +29,12 @@ public class FileEventLogger implements EventLogger{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Value("File logger")
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     @PostConstruct
