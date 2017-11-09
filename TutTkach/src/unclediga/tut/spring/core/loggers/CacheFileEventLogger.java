@@ -1,6 +1,5 @@
 package unclediga.tut.spring.core.loggers;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import unclediga.tut.spring.core.beans.Event;
@@ -35,6 +34,12 @@ public class CacheFileEventLogger extends FileEventLogger {
             writeEventsFromCache();
             cache.clear();
         }
+    }
+
+    @Value("File logger with cache")
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     private void writeEventsFromCache() {

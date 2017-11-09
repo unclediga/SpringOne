@@ -12,6 +12,7 @@ import org.junit.Test;
 import unclediga.tut.spring.core.beans.Client;
 import unclediga.tut.spring.core.beans.Event;
 import unclediga.tut.spring.core.beans.EventType;
+import unclediga.tut.spring.core.loggers.AbstractLogger;
 import unclediga.tut.spring.core.loggers.EventLogger;
 
 import static org.junit.Assert.*;
@@ -85,13 +86,18 @@ public class TestApp {
         method.invoke(app, eventType, event, message);
     }
 
-    private class DummyLogger implements EventLogger {
+    private class DummyLogger extends AbstractLogger {
 
         private Event event;
 
         @Override
         public void logEvent(Event event) {
             this.event = event;
+        }
+
+        @Override
+        public void setName(String name) {
+            this.name = name;
         }
 
         public Event getEvent() {
